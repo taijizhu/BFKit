@@ -46,10 +46,14 @@
 
 - (CGSize)fixedScreenSize {
     CGSize screenSize = self.bounds.size;
+    #ifdef ECARD_EXTENSION
     
+    #else
     if ((NSFoundationVersionNumber <= NSFoundationVersionNumber_iOS_7_1) && UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
         return CGSizeMake(screenSize.height, screenSize.width);
     }
+    
+    #endif 
     
     return screenSize;
 }
